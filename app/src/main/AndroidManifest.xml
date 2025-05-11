@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.langqi.fakegps">
+
+    <!-- 【位置相关权限】 -->
+    <!-- 获取精确位置信息（GPS） -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 获取粗略位置信息（网络、Wi-Fi） -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Android Q 开始允许前台和后台不同范围的位置访问 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <!-- 允许创建模拟位置，用于测试目的 -->
+    <uses-permission
+        android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation,ProtectedPermissions" />
+    <!-- Android 14 新增的前台服务位置权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <!-- 【前台服务和广播权限】 -->
+    <!-- 允许启动前台服务，确保服务持续运行 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- 允许服务在设备启动完成后自动启动 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 允许发送粘性广播 -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FakeGPS"
+        tools:targetApi="31">
+
+        <!-- 【服务声明】 -->
+        <!-- 用于模拟位置信息的服务 -->
+        <service
+            android:name="com.langqi.fakegps.LocationMockService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <!-- 【活动声明】 -->
+        <!-- 应用启动的入口 Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".FakeGPSActivity"
+            android:exported="true" />
+
+    </application>
+
+</manifest>
