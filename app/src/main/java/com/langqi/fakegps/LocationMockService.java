@@ -27,7 +27,7 @@ public class LocationMockService extends Service {
     private final BroadcastReceiver locationReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d(LOG_TAG, "收到 ADB 广播: " + intent.getAction());
+            // Log.d(LOG_TAG, "收到广播: " + intent.getAction());
 
             if (ACTION_MOCK_LOCATION.equals(intent.getAction())) {
                 double lat = 0.0;
