@@ -12,7 +12,6 @@
 - 真机环境技术上不支持 `Keep` 但支持 `小米运动健康` `华为运动健康` 等
 - 模拟器环境下支持 `Keep` 例如PC端的 `BlueStacks 5 China`
 
-推荐使用 `BlueStacks 5 China Android 11 模拟器` 可以完美运行
 
 ## 自定义路径 
 
